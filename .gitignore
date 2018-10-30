@@ -1,9 +1,11 @@
-/metadata
-.crc
+*.parquet
 
-.ipynb_checkpoints/
-tflogs/
-slim_logs/
+**/metadata
+*.crc
+
+**/.ipynb_checkpoints
+**/tflogs
+**/slim_logs
 
 TODO/
 *.pyc
