@@ -1,3 +1,6 @@
+/metadata
+.crc
+
 .ipynb_checkpoints/
 tflogs/
 slim_logs/
