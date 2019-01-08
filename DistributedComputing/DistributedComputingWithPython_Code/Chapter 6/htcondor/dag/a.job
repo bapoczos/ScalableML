@@ -1,0 +1,23 @@
+# Simple Condor job file
+# There is no requirement or standard on job file extensions.
+# Format is key = value
+# keys and values are case insensitive, with the exception of
+# paths and file names (depending on the file system).
+# Usage: shell> condor_submit a.job
+
+# Universe is the execution environment for our jobs
+# vanilla is the one for shell scripts etc.
+Universe = vanilla
+# Executable is the path to the executable to run
+Executable = /bin/echo
+# The arguments string is passed to the Executable
+# The entire string is enclosed in double-quotes
+# Arguments with spaces are in single quotes
+# Single & double quotes are escaped by repeating them
+Arguments = "I am job A"
+# Output is the file where STDOUT will be redirected to
+Output = a_stdout.txt
+# Log is the HTCondor log, not the log for our app
+Log = a.log
+# Queue tells HTCondor to enqueue our job
+Queue

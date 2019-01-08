@@ -1,0 +1,25 @@
+(book)bookuser@yippy> condor_submit simple.job; condor_q
+Submitting job(s).
+1 job(s) submitted to cluster 60.
+
+
+-- Schedd: yippy
+ ID      OWNER            SUBMITTED     RUN_TIME ST PRI SIZE CMD
+  60.0   bookuser        1/10 15:24   0+00:00:00 R  0   0.0  python3.5 -c print
+
+1 jobs; 0 completed, 0 removed, 0 idle, 1 running, 0 held, 0 suspended
+(book)bookuser@yippy> ls -als
+total 64
+ 0 drwxr-xr-x@ 6 bookuser  staff    204 Jan  8 08:15 .
+ 0 drwxr-xr-x@ 5 bookuser  staff    170 Jan  9 15:10 ..
+ 8 -rw-r--r--@ 1 bookuser  staff   1001 Jan  9 11:06 simple.job
+48 -rw-r--r--@ 1 bookuser  staff  23237 Jan 10 15:24 simple.log
+ 0 -rw-r--r--@ 1 bookuser  staff      0 Jan  7 21:38 simple_stderr.txt
+ 8 -rw-r--r--@ 1 bookuser  staff     17 Jan 10 15:24 simple_stdout.txt
+(book)bookuser@yippy>
+
+
+
+
+
+

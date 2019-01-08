@@ -1,0 +1,2 @@
+model_checkpoint_path: "weights-save-example.ckpt"
+all_model_checkpoint_paths: "weights-save-example.ckpt"

@@ -1,0 +1,25 @@
+# Simple Condor job file
+# There is no requirement or standard on job file extensions.
+# Format is key = value
+# keys and values are case insensitive, with the exception of
+# paths and file names (depending on the file system).
+# Usage: shell> condor_submit simple.job
+
+# Universe is the execution environment for our jobs
+# vanilla is the one for shell scripts etc.
+Universe = vanilla
+# Executable is the path to the executable to run
+Executable = /usr/local/bin/python3.5
+# The arguments string is passed to the Executable
+# The entire string is enclosed in double-quotes
+# Arguments with spaces are in single quotes
+# Single & double quotes are escaped by repeating them
+Arguments = "-c 'print(''Hello, HTCondor!'')'"
+# Output is the file where STDOUT will be redirected to
+Output = simple_stdout.txt
+# Error is the file where STDERR will be redirected to
+Error = simple_stderr.txt
+# Log is the HTCondor log, not the log for our app
+Log = simple.log
+# Queue tells HTCondor to enqueue our job
+Queue

@@ -1,0 +1,13 @@
+# Simple Condor DAG file
+# There is no requirement or standard on DAG file extensions.
+# Usage: shell> condor_submit_dag simple.dag
+
+# Define the nodes in the DAG
+JOB A a.job
+JOB B b.job
+JOB C c.job
+JOB D d.job
+
+# Define the relationship between nodes
+PARENT A CHILD B C
+PARENT B C CHILD D
