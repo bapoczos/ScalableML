@@ -2,7 +2,8 @@
 
 #run this code with "celery -A kmeans_workers worker --loglevel=info" on the worker machines
 
-#Then this machine will become a worker, and will be able to run the app task, i.e. the sort function, whenever the broker requests it.
+#Then this machine will become a worker, and will be able to run the app task, 
+#i.e. the kmeans_tasks function, whenever the broker requests it.
 
 import celery
 import numpy as np
