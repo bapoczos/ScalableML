@@ -6,8 +6,11 @@
 
 import celery
 import numpy as np
-import jsonpickle
 from copy import deepcopy
+
+import jsonpickle
+import jsonpickle.ext.numpy as jsonpickle_numpy
+jsonpickle_numpy.register_handlers()
 
 app = celery.Celery('kmeans_workers',
                         broker='amqp://myguest:myguestpwd@PROD-JOB-844fd7d2202ac4da.elb.us-east-2.amazonaws.com',
