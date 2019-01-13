@@ -39,6 +39,7 @@ def estep(C,X):
     #print('C',C)
     #print("shape of X:", len(X))
     for i in range(len(X)):
+        print(X[i])
         distances = dist(X[i].points, C)
         cluster = np.argmin(distances)
         X[i].label = cluster
