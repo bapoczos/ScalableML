@@ -1,3 +1,9 @@
+
+
+#run this code with "celery -A kmeans_workers worker --loglevel=info" on the worker machines
+
+#Then this machine will become a worker, and will be able to run the app task, i.e. the sort function, whenever the broker requests it.
+
 import celery
 import numpy as np
 import jsonpickle
@@ -6,10 +12,6 @@ from copy import deepcopy
 app = celery.Celery('kmeans_workers',
                         broker='amqp://myguest:myguestpwd@PROD-JOB-844fd7d2202ac4da.elb.us-east-2.amazonaws.com',
                         backend='amqp://myguest:myguestpwd@PROD-JOB-844fd7d2202ac4da.elb.us-east-2.amazonaws.com')
-
-
-#run this code with "celery -A kmeans_workers worker --loglevel=info". 
-#Then this machine will become a worker, and will be able to run the app task, i.e. the sort function, whenever the broker requests it.
 
 @app.task
 def kmeans_tasks(task, **kwargs):
