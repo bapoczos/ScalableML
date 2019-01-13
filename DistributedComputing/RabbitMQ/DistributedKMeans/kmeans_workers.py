@@ -1,5 +1,6 @@
 import celery
 import numpy as np
+import jsonpickle
 from copy import deepcopy
 
 app = celery.Celery('kmeans_workers',
@@ -13,12 +14,12 @@ app = celery.Celery('kmeans_workers',
 @app.task
 def kmeans_tasks(task, **kwargs):
     if task=='estep':
-        C=kwargs['C']
-        X=kwargs['X']
+        C=jsonpickle.decode(kwargs['C'])
+        X=jsonpickle.decode(kwargs['X'])
         results=estep(C,X)
         return results
     elif task =='mstep':
-        X=kwargs['X']
+        X=jsonpickle.decode(kwargs['X'])
         n_clusters=kwargs['n_clusters']
         n_features=kwargs['n_features']
         results=mstep(X,n_clusters,n_features)
