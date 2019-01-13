@@ -37,6 +37,13 @@ def kmeans_tasks(task, **kwargs):
 def dist(a, b, ax=1):
     return np.linalg.norm(a - b, axis=ax)
         
+class NumpyEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, np.ndarray):
+            return obj.tolist()
+        elif isinstance(obj, np.int64): 
+            return int(obj)
+        return json.JSONEncoder.default(self, obj)
 
 def estep(C,X):
     print('*** we are in the E-Step ***')
@@ -49,7 +56,8 @@ def estep(C,X):
         X[i]["label"] = cluster
         #print(X[i].label)
     print(" *** Labels updated. E-step done ***")    
-    return deepcopy(X)    
+    return json.dumps({'X':deepcopy(X)},cls=NumpyEncoder)    
+
 
 def mstep(X,n_clusters,n_features):
     print('*** we are in the M-Step ***')
@@ -60,5 +68,5 @@ def mstep(X,n_clusters,n_features):
         if (np.any(np.isnan(C[i]))):
             C[i]=np.zeros(n_features)
     print(" *** Cluster centers updated. M-step done ***")        
-    return deepcopy(C)
+    return json.dumps({'C':deepcopy(C)},cls=NumpyEncoder)
 
