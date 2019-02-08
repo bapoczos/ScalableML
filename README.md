@@ -1,2 +1,2 @@
 # ScalableML
-Demo codes for the scalableML class
+Demo codes for Scalable Machine Learning
