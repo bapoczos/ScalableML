@@ -9,6 +9,9 @@ rm -f $HOME/.ssh/id_rsa
 #remove anything related to spark
 rm -rf $HOME/spark
 
+cd /tmp
+rm -rf *
+
 cd /usr/local/bin
 rm -f *
 
