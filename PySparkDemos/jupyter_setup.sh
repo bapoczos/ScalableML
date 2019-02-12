@@ -1,3 +1,4 @@
+# you can run this code with "source jupyter_setup.sh"
 #change this public DNS address to the address of your spark master node
 export spark_master_hostname=ec2-18-191-239-57.us-east-2.compute.amazonaws.com
 
