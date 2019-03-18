@@ -1,0 +1,6 @@
+numpy
+scipy
+bitarray
+future
+mockredispy
+mongomock
