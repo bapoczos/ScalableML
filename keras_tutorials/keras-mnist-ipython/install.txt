@@ -1,0 +1,28 @@
+sudo apt-get install -y graphviz libgraphviz-dev
+pip install graphviz
+pip install pydot
+pip install matplotlib
+pip install pandas
+
+ python -m ipykernel install --user
+pip install ipykernel
+ pip install keras
+
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/lib64
+:/usr/local/cuda/extras/CUPTI/lib64"
+
+export CUDA_HOME=/usr/local/cuda
+
+pip install --upgrade tensorflow-gpu
+
+ sudo dpkg -i libcudnn6_6.0.21-1+cuda8.0_amd64.deb 
+
+sudo apt-get install cuda-8-0
+
+sudo dpkg -i cuda-repo-ubuntu1604-8-0-local-ga2_8.0.61-1_amd64.deb 
+
+conda env list
+
+
+
+
