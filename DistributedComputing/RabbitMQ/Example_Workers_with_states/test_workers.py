@@ -51,6 +51,7 @@ def message_to_workers1(msg):
     messages.insert(0, results)
     messages=messages[0:2]
     #messages.append(results)
+    time.sleep(0.2)
     return messages
 
 @app.task
@@ -74,6 +75,7 @@ def message_to_workers2(msg):
     old_messages.insert(0, results)
     old_messages=old_messages[0:2]
     #messages.append(results)
+    time.sleep(0.2)
     return old_messages
 
         
