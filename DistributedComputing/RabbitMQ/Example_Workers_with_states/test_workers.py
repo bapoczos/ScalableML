@@ -11,9 +11,15 @@ import time
 import math
 import socket
 
+#app = celery.Celery('test_workers',
+#                        broker='amqp://barnabas:barnabaspwd@PROD-JOB-844fd7d2202ac4da.elb.us-east-2.amazonaws.com',
+#                        backend='amqp://barnabas:barnabaspwd@PROD-JOB-844fd7d2202ac4da.elb.us-east-2.amazonaws.com')
+
 app = celery.Celery('test_workers',
-                        broker='amqp://barnabas:barnabaspwd@PROD-JOB-844fd7d2202ac4da.elb.us-east-2.amazonaws.com',
-                        backend='amqp://barnabas:barnabaspwd@PROD-JOB-844fd7d2202ac4da.elb.us-east-2.amazonaws.com')
+                        broker='amqp://barnabas:barnabaspwd@BarnabasBalancer-406f3065f2a02a86.elb.us-east-2.amazonaws.com',
+                        backend='amqp://barnabas:barnabaspwd@BarnabasBalancer-406f3065f2a02a86.elb.us-east-2.amazonaws.com')
+
+
 
 
 messages=[]
