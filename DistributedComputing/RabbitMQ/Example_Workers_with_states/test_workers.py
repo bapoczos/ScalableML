@@ -12,8 +12,8 @@ import math
 import socket
 
 app = celery.Celery('test_workers',
-                        broker='amqp://myguest2:myguestpwd@PROD-JOB-844fd7d2202ac4da.elb.us-east-2.amazonaws.com',
-                        backend='amqp://myguest2:myguestpwd@PROD-JOB-844fd7d2202ac4da.elb.us-east-2.amazonaws.com')
+                        broker='amqp://barnabas:barnabaspwd@PROD-JOB-844fd7d2202ac4da.elb.us-east-2.amazonaws.com',
+                        backend='amqp://barnabas:barnabaspwd@PROD-JOB-844fd7d2202ac4da.elb.us-east-2.amazonaws.com')
 
 
 messages=[]
