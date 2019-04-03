@@ -12,14 +12,11 @@ import math
 import socket
 
 app = celery.Celery('test_workers',
-                        broker='amqp://myguest:myguestpwd@PROD-JOB-844fd7d2202ac4da.elb.us-east-2.amazonaws.com',
-                        backend='amqp://myguest:myguestpwd@PROD-JOB-844fd7d2202ac4da.elb.us-east-2.amazonaws.com')
+                        broker='amqp://myguest2:myguestpwd@PROD-JOB-844fd7d2202ac4da.elb.us-east-2.amazonaws.com',
+                        backend='amqp://myguest2:myguestpwd@PROD-JOB-844fd7d2202ac4da.elb.us-east-2.amazonaws.com')
 
 
 messages=[]
-
-
-
 
 def timestr():
     tmptime0=time.time()
@@ -43,7 +40,8 @@ def message_to_workers1(msg):
     print(time.time())
     
     print('***************')
-    messages.append(results)
+    messages.insert(0, results)
+    #messages.append(results)
     return messages
     
         
