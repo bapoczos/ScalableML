@@ -20,6 +20,8 @@ app = celery.Celery('test_workers',
                         backend='amqp://barnabas:barnabaspwd@BarnabasBalancer-406f3065f2a02a86.elb.us-east-2.amazonaws.com')
 
 
+import os
+
 
 
 messages=[]
@@ -39,12 +41,12 @@ def message_to_workers1(msg):
     
     tmpvar= str(int(1000*np.random.rand()))
     tmpip= socket.gethostbyname(socket.gethostname())
-    results=tmpip+'_'+current_process()._name+'_'   #+str(current_process().index)
-    results=results+'_'+msg+'_'+tmpvar+'_'+timestr()+'****'
+    results=tmpip+'_'+current_process()._name+'_'+'**'+str(os.getpid())+'**'
+    results=results+'_'+msg+'_'+tmpvar+'_'+timestr()+'_'+'****'
     print(results)
     
     print(time.time())
-    
+    print(os.getpid())
     print('***************')
     messages.insert(0, results)
     messages=messages[0:2]
@@ -62,8 +64,8 @@ def message_to_workers2(msg):
     old_messages = messages
     tmpvar= str(int(1000*np.random.rand()))
     tmpip= socket.gethostbyname(socket.gethostname())
-    results=tmpip+'_'+current_process()._name+'_'  #+str(current_process().index)
-    results=results+'_'+msg+'_'+tmpvar+'_'+timestr()+'****'
+    results=tmpip+'_'+current_process()._name+'_'+'**'+str(os.getpid())+'**'
+    results=results+'_'+msg+'_'+tmpvar+'_'+timestr()+'_'+'**'+str(os.getpid())+'****'
     print(results)
     
     print(time.time())
