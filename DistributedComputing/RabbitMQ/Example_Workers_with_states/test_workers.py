@@ -1,5 +1,5 @@
 
-#run this code with "celery -A test_workers worker --loglevel=info  --concurrency=2" on the 2nd worker machine
+#run this code with "celery -A test_workers worker --loglevel=info  --concurrency=3" (or --concurrency=4) 
 #Then this machine will become a worker, and will be able to run the app task, 
 
 import celery
