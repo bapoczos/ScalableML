@@ -1,19 +1,16 @@
 
-
-#run this code with "celery -A test_workers worker --loglevel=info  --concurrency=3" on the worker machines
-
+#run this code with "celery -A test_worker_1 worker --loglevel=info" on the 1st worker machine
 #Then this machine will become a worker, and will be able to run the app task, 
 
 import celery
 import numpy as np
-#from copy import deepcopy
 
 from billiard import current_process
 import json
 import time
 import math
 
-app = celery.Celery('kmeans_workers',
+app = celery.Celery('test_workers',
                         broker='amqp://myguest:myguestpwd@PROD-JOB-844fd7d2202ac4da.elb.us-east-2.amazonaws.com',
                         backend='amqp://myguest:myguestpwd@PROD-JOB-844fd7d2202ac4da.elb.us-east-2.amazonaws.com')
 
@@ -23,9 +20,7 @@ messages=[]
 
 def timestr():
     tmptime0=time.time()
-    #print(tmptime0)
     tmptime=tmptime0/1000
-    #print(tmptime)
     return str(math.floor(100000*(tmptime-math.floor(tmptime))))
 
 @app.task
