@@ -39,15 +39,39 @@ def message_to_workers1(msg):
     
     tmpvar= str(int(1000*np.random.rand()))
     tmpip= socket.gethostbyname(socket.gethostname())
-    results=tmpip+'_'+current_process()._name+'_'+str(current_process().index)
-    results=results+'_'+msg+'_'+tmpvar+'_'+timestr()
+    results=tmpip+'_'+current_process()._name+'_'   #+str(current_process().index)
+    results=results+'_'+msg+'_'+tmpvar+'_'+timestr()+'****'
     print(results)
     
     print(time.time())
     
     print('***************')
     messages.insert(0, results)
+    messages=messages[0:2]
     #messages.append(results)
     return messages
+
+@app.task
+def message_to_workers2(msg):
+    global messages    
     
+    p = current_process()
+    print(current_process()._name)
+    #print(current_process().index)
+    
+    old_messages = messages
+    tmpvar= str(int(1000*np.random.rand()))
+    tmpip= socket.gethostbyname(socket.gethostname())
+    results=tmpip+'_'+current_process()._name+'_'  #+str(current_process().index)
+    results=results+'_'+msg+'_'+tmpvar+'_'+timestr()+'****'
+    print(results)
+    
+    print(time.time())
+    
+    print('***************')
+    old_messages.insert(0, results)
+    old_messages=old_messages[0:2]
+    #messages.append(results)
+    return old_messages
+
         
