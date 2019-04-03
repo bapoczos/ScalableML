@@ -66,7 +66,7 @@ def message_to_workers2(msg):
     tmpvar= str(int(1000*np.random.rand()))
     tmpip= socket.gethostbyname(socket.gethostname())
     results=tmpip+'_'+current_process()._name+'_'+'**'+str(os.getpid())+'**'
-    results=results+'_'+msg+'_'+tmpvar+'_'+timestr()+'_'+'**'+str(os.getpid())+'****'
+    results=results+'_'+msg+'_'+tmpvar+'_'+timestr()+'_'+'****'
     print(results)
     
     print(time.time())
