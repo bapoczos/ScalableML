@@ -19,6 +19,7 @@ def sort(xs):
     half_lenxs = lenxs // 2
     left = xs[:half_lenxs]
     right = xs[half_lenxs:]
+    # call the sort function recursively and merge the results with the merge function
     return(merge(sort(left), sort(right)))
 
 
