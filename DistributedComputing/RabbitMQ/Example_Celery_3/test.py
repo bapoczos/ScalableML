@@ -5,7 +5,7 @@ import math
 import socket
 import numpy as np
 import os
-
+import random
 # First we setup a connection to the message broker:
 
 # Make sure that the 'myguest' user exists with 'myguestpwd' on the RabbitMQ server, and the 
@@ -36,6 +36,8 @@ def echo(message):
     
     results=tmpip+' process_name: '+process_name+' process_index: '+process_index+' pid: '+str(os.getpid())+' message: '+message+' '+'**'
     print(results)
+    
+    time.sleep(random.uniform(0,7)) # Let us wait some random time to simulate that some jobs might take longer time
     
     return 'Response from worker: '+results
 
