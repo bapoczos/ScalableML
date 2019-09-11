@@ -49,4 +49,4 @@ def echo(message):
 # then run this code with 
 # "celery -A test worker --loglevel=info --concurrency=3" on worker machine 1
 # "celery -A test worker --loglevel=info --concurrency=2" on worker machine 2
-# We can see that we can set up different concurrency on each worker machine
+# We can set up different concurrency level on each worker machine
