@@ -34,19 +34,19 @@ def echo(message):
     
     tmpip= socket.gethostbyname(socket.gethostname())
     
-    results=tmpip+' process_name: '+process_name+' process_index: '+process_index+' pid: '+str(os.getpid())+' message: '+message+' '+'**'
+    results=tmpip+' process_name: '+process_name+' process_index: '+process_index+' os_pid: '+str(os.getpid())+' message: '+message+' '+'**'
     print(results)
     
     time.sleep(random.uniform(0,7)) # Let us wait some random time to simulate that some jobs might take longer time
     
     return 'Response from worker: '+results
 
+# One each of the worker machines you will need to run first:
+#!sudo rabbitmqctl add_user myguest myguestpwd
+#!sudo rabbitmqctl set_permissions -p / myguest "." "." ".*"
 
-#run this code with "celery -A test worker --loglevel=info --concurrency=3". 
-#Then this machine will become a worker, and will be able to run the app task, i.e. the echo function, whenever the broker requests it.
 
-# The echo function will be run by these commands on a remote machine:
-
-# from test import echo
-# res = echo.delay('Python rocks!'); print(type(res)); print(res)
-# res.result
+# then run this code with 
+# "celery -A test worker --loglevel=info --concurrency=3" on worker machine 1
+# "celery -A test worker --loglevel=info --concurrency=2" on worker machine 2
+# We can see that we can set up different concurrency on each worker machine
