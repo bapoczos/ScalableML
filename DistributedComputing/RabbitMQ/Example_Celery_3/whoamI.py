@@ -8,12 +8,13 @@ import os
 import random
 # First we setup a connection to the message broker:
 
-# Make sure that the 'myguest' user exists with 'myguestpwd' on the RabbitMQ server, and the 
-# 'PROD-JOB-844fd7d2202ac4da.elb.us-east-2.amazonaws.com' address from the load balancer has been set up correctly.
+# Make sure that the 'myguest' user exists with 'myguestpwd' on the RabbitMQ server and your load balancer has been set up correctly.
+# My load balancer address is'RabbitMQLB-8e09cd48a60c9a1e.elb.us-east-2.amazonaws.com'. 
+# Below you will need to change it to your load balancer's address.
 
-app = celery.Celery('test',
-                        broker='amqp://myguest:myguestpwd@PROD-JOB-844fd7d2202ac4da.elb.us-east-2.amazonaws.com',
-                        backend='amqp://myguest:myguestpwd@PROD-JOB-844fd7d2202ac4da.elb.us-east-2.amazonaws.com')
+app = celery.Celery('whoamI',
+                        broker='amqp://myguest:myguestpwd@RabbitMQLB-8e09cd48a60c9a1e.elb.us-east-2.amazonaws.com',
+                        backend='rpc://myguest:myguestpwd@RabbitMQLB-8e09cd48a60c9a1e.elb.us-east-2.amazonaws.com')
 
 # Let us use the @app.task decorator on our echo function. It will allow us to call echo.delay() on the server remotely
 
@@ -47,6 +48,7 @@ def echo(message):
 
 
 # then run this code with 
-# "celery -A test worker --loglevel=info --concurrency=3" on worker machine 1
-# "celery -A test worker --loglevel=info --concurrency=2" on worker machine 2
+# "celery -A whoamI worker --loglevel=info --concurrency=3" on worker machine 1
+# "celery -A whoamI worker --loglevel=info --concurrency=2" on worker machine 2
+
 # We can set up different concurrency level on each worker machine
