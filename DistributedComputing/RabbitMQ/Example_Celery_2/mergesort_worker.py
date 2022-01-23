@@ -1,12 +1,13 @@
 import celery
 
 
-app = celery.Celery('mergesort',
-                        broker='amqp://myguest:myguestpwd@PROD-JOB-844fd7d2202ac4da.elb.us-east-2.amazonaws.com',
-                        backend='amqp://myguest:myguestpwd@PROD-JOB-844fd7d2202ac4da.elb.us-east-2.amazonaws.com')
+app = celery.Celery('mergesort_worker',
+                        broker='amqp://myguest:myguestpwd@RabbitMQLB-8e09cd48a60c9a1e.elb.us-east-2.amazonaws.com',
+                        backend='rpc://myguest:myguestpwd@RabbitMQLB-8e09cd48a60c9a1e.elb.us-east-2.amazonaws.com')
 
 
-#run this code with "celery -A mergesort worker --loglevel=info". 
+#run this code with "celery -A mergesort_worker worker --loglevel=info".
+
 #Then this machine will become a worker, and will be able to run the app task, i.e. the sort function, whenever the broker requests it.
 
 
