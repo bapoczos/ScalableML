@@ -8,7 +8,7 @@ import celery
 
 app = celery.Celery('test',
                         broker='amqp://myguest:myguestpwd@RabbitMQLB-8e09cd48a60c9a1e.elb.us-east-2.amazonaws.com',
-                        backend='amqp://myguest:myguestpwd@RabbitMQLB-8e09cd48a60c9a1e.elb.us-east-2.amazonaws.com')
+                        backend='rpc://myguest:myguestpwd@RabbitMQLB-8e09cd48a60c9a1e.elb.us-east-2.amazonaws.com')
 
 # Let us use the @app.task decorator on our echo function. It will allow us to call echo.delay() on the server remotely
 
