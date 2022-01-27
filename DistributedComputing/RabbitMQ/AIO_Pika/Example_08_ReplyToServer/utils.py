@@ -7,6 +7,6 @@ class NumpyEncoder(json.JSONEncoder):
             return obj.tolist()
         elif isinstance(obj, np.int64): 
             return int(obj)
-        elif isintance(obj, np.float64):
+        elif isinstance(obj, np.float64):
             return float(obj)
         return json.JSONEncoder.default(self, obj)
