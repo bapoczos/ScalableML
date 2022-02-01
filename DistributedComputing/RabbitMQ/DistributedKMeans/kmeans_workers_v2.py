@@ -1,8 +1,8 @@
 
 
-#run this code with "celery -A kmeans_workers_v2 worker --loglevel=info --concurrency=4" on the worker machines
+#run this code with "celery -A kmeans_workers_v2 worker --loglevel=info --concurrency=1" on the 4 worker machines
 
-#Then this machine will become a worker, and will be able to run the app task, 
+#Then these machines become workers, and will be able to run the app task, 
 #i.e. the kmeans_tasks function, whenever the broker requests it.
 
 import celery
@@ -46,7 +46,7 @@ def kmeans_tasks(task, **kwargs):
         n_features = json_load["n_features"]
         print('n_clusters:', n_clusters)
         print('n_features:', n_features)
-        return 'success'
+        return f'success: {len(X) points uploaded}'
     else:
         raise ValueError('undefined task')
 
