@@ -65,7 +65,8 @@ class NumpyEncoder(json.JSONEncoder):
 def data_to_workers(C,X):
     print('*** we are sending data to the workers ***')
     #print('C',C)
-    #print("shape of X:", len(X))
+    
+    print("length of X:", len(X))
     for i in range(len(X)):
         #print(X[i])
         distances = dist(X[i]["points"], C)
