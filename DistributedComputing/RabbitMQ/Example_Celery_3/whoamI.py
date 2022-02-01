@@ -6,6 +6,7 @@ import socket
 import numpy as np
 import os
 import random
+
 # First we setup a connection to the message broker:
 
 # Make sure that the 'myguest' user exists with 'myguestpwd' on the RabbitMQ server and your load balancer has been set up correctly.
@@ -23,10 +24,7 @@ def echo(message):
     
     p = current_process()
     
-    
-    #print(current_process()._name)
-    #print(current_process().index)
-    
+
     process_name=current_process()._name
     try:
         process_index=str(current_process().index)
@@ -42,13 +40,11 @@ def echo(message):
     
     return 'Response from worker: '+results
 
-# One each of the worker machines you will need to run first:
-#!sudo rabbitmqctl add_user myguest myguestpwd
-#!sudo rabbitmqctl set_permissions -p / myguest "." "." ".*"
 
 
-# then run this code with 
+# then run this code e.g with 
 # "celery -A whoamI worker --loglevel=info --concurrency=3" on worker machine 1
 # "celery -A whoamI worker --loglevel=info --concurrency=2" on worker machine 2
+# "celery -A whoamI worker --loglevel=info --concurrency=4" on worker machine 4
 
 # We can set up different concurrency level on each worker machine
