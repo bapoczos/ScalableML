@@ -3,6 +3,10 @@ import celery
 # First we setup a connection to the message broker:
 
 # Make sure that the 'myguest' user exists with 'myguestpwd' on the RabbitMQ server and your load balancer has been set up correctly.
+#e.g run first in your jupyter notebook on your server machine:
+# !sudo rabbitmqctl add_user myguest myguestpwd
+# !sudo rabbitmqctl set_permissions -p / myguest "." "." ".*"
+
 # My load balancer address is'RabbitMQLB-8e09cd48a60c9a1e.elb.us-east-2.amazonaws.com'. 
 # Below you will need to change it to your load balancer's address.
 
@@ -16,7 +20,7 @@ app = celery.Celery('test',
 def echo(message):
     return 'Response from worker: '+message
 
-#run this code with "celery -A test worker --loglevel=info". 
+#run this code on the worker machine with "celery -A test worker --loglevel=info". 
 
 #Then this machine will become a worker, and will be able to run the app task, i.e. the echo function, whenever the broker requests it.
 
