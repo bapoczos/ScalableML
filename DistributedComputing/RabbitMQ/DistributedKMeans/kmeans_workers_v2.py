@@ -46,7 +46,7 @@ def kmeans_tasks(task, **kwargs):
         n_features = json_load["n_features"]
         print('n_clusters:', n_clusters)
         print('n_features:', n_features)
-        return f'success: {len(X) points uploaded}'
+        return f'success: {len(X)} points uploaded'
     else:
         raise ValueError('undefined task')
 
