@@ -4,7 +4,7 @@
 #run this code with "celery -A imagesearch_workers worker --loglevel=info" on the worker machines
 
 #Then this machine will become a worker, and will be able to run the app task, 
-#i.e. the imagesearch_tasks or upload_data functions, whenever the server requests it.
+#i.e., the imagesearch_tasks or upload_data functions, whenever the server requests it.
 
 import celery
 import numpy as np
